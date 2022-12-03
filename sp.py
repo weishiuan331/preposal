@@ -45,14 +45,11 @@ prediction_model = Sequential()
 prediction_model.add(LSTM(units=30, return_sequences=True, input_shape=(A.shape[1], 1)))
 prediction_model.add(Dropout(0.2))
 prediction_model.add(LSTM(units=30,activation = "relu"))
-#prediction_model.add(Dropout(0.2))
-#prediction_model.add(LSTM(units=30))
-#prediction_model.add(Dropout(0.2))
 prediction_model.add(Dense(units=1)) 
 
 
 prediction_model.compile(optimizer='adam', loss='mean_squared_error')
-prediction_model.fit(A,B,epochs=10,batch_size=30)
+prediction_model.fit(A,B,epochs=20,batch_size=30)
 
 
 
@@ -88,7 +85,6 @@ plt.plot(price_predicted, color='blue',label="Predicted {} Adjusted Close Price"
 plt.title("{} Share Adjusted Close Price".format(business))
 plt.xlabel('Time')
 plt.ylabel('Adjusted Close Price')
-#plt.ylabel('{} Share Adjusted Close Price'.format(business))
 plt.legend()
 plt.show()
 
